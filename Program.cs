@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace stock_purchase_report
+namespace StockPurchaseReport
 {
     class Program
     {
