@@ -16,19 +16,29 @@ namespace StockPurchaseReport
 
             var stockPurchases = new Dictionary<string, List<double>>();
 
-            stockPurchases.Add(stocks["GM"], new List<double>() { 234.09, 66.66, 45.65 });
-            stockPurchases.Add(stocks["CAT"], new List<double>() { 333.67, 343.56, 9877.45 });
-            stockPurchases.Add(stocks["LYFT"], new List<double>() { 3345.06 });
+            stockPurchases.Add("GM", new List<double>() { 234.09, 66.66, 45.65 });
+            stockPurchases.Add("CAT", new List<double>() { 333.67, 343.56, 9877.45 });
+            stockPurchases.Add("LYFT", new List<double>() { 3345.06 });
 
             Console.WriteLine(stockPurchases);
 
             foreach (var stock in stockPurchases)
             {
                 var totalPurchases = new double();
+                string companyName = "";
+
+                foreach (KeyValuePair<string, string> stockInfo in stocks)
+                {
+                    if (stock.Key == stockInfo.Key)
+                    {
+                        companyName = stockInfo.Value;
+
+                    }
+                }
 
                 stock.Value.ForEach(num => totalPurchases += num);
 
-                Console.WriteLine($"Investor has spent a total of {totalPurchases} on the stock for {stock.Key}");
+                Console.WriteLine($"Investor has spent a total of {totalPurchases} on the stock for {companyName}");
             }
         }
     }
