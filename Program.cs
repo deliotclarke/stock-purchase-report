@@ -16,11 +16,20 @@ namespace StockPurchaseReport
 
             var stockPurchases = new Dictionary<string, List<double>>();
 
-            var GMPurchases = new List<double>();
-            GMPurchases.Add(234.09);
+            stockPurchases.Add(stocks["GM"], new List<double>() { 234.09, 66.66, 45.65 });
+            stockPurchases.Add(stocks["CAT"], new List<double>() { 333.67, 343.56, 9877.45 });
+            stockPurchases.Add(stocks["LYFT"], new List<double>() { 3345.06 });
 
+            Console.WriteLine(stockPurchases);
 
-            stockPurchases.Add(stocks["GM"], new List<{ 234.09 } >);
+            foreach (var stock in stockPurchases)
+            {
+                var totalPurchases = new double();
+
+                stock.Value.ForEach(num => totalPurchases += num);
+
+                Console.WriteLine($"Investor has spent a total of {totalPurchases} on the stock for {stock.Key}");
+            }
         }
     }
 }
