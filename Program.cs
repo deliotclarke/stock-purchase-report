@@ -20,13 +20,14 @@ namespace StockPurchaseReport
             stockPurchases.Add("CAT", new List<double>() { 333.67, 343.56, 9877.45 });
             stockPurchases.Add("LYFT", new List<double>() { 3345.06 });
 
-            Console.WriteLine(stockPurchases);
-
+            Console.WriteLine();
             foreach (var stock in stockPurchases)
             {
                 var totalPurchases = new double();
                 string companyName = "";
 
+                // iterating over the dictionary of ticker names and full names to match the stockPurchases to stocks
+                // in order to make the full name accessible to this function.
                 foreach (KeyValuePair<string, string> stockInfo in stocks)
                 {
                     if (stock.Key == stockInfo.Key)
@@ -36,9 +37,13 @@ namespace StockPurchaseReport
                     }
                 }
 
+                // iterating over the list inside the dictionary of stockPurchases to accumulate all purchases
                 stock.Value.ForEach(num => totalPurchases += num);
 
+                // readable data
                 Console.WriteLine($"Investor has spent a total of {totalPurchases} on the stock for {companyName}");
+                Console.WriteLine();
+
             }
         }
     }
